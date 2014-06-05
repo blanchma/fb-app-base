@@ -1,0 +1,19 @@
+<div class="navbar navbar-static-top">
+  <div class="navbar-inner">
+    <%= link_to "Ranking Facebook's User", root_path, :class => 'brand' %>
+    <ul class='nav pull-right'>
+      <% if user_signed_in? %>
+        <li>
+         <p class='navbar-text'>Logged in as <%= current_user.name %></p>
+        </li>
+        <li>
+          <%= link_to 'Logout', signout_path %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to 'Login', signin_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

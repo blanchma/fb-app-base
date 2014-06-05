@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en" xmlns="http://www.w3.org/1999/html"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8" />
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+    <meta name="description" content="Tu mamá en Facebook cotiza en bolsa con el Banco Hipotecario.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="<%= "#{ENV['HOST']}#{asset_path 'tu_mama_cotiza.jpg'}" %>" />
+    <link rel="image_src" href="<%= "#{ENV['HOST']}#{asset_path 'tu_mama_cotiza.jpg'}" %>" />
+    <meta property="og:url" content="<%= ENV['FACEBOOK_CANVAS'] %>" />
+    <meta property="fb:app_id" content="<%= ENV['FACEBOOK_APP_ID'] %>" /> 
+    <meta property="og:title" content="Banco Hipotecario - Tu Mamá Cotiza en Bolsa"/>
+    <meta property="og:site_name" content="Tu Mamá Cotiza"/>
+    <meta property="og:description" content="Tu mamá en Facebook cotiza en bolsa con el Banco Hipotecario." />
+
+   <!--<meta name="viewport" content="initial-scale=1; maximum-scale=1">-->
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <%= stylesheet_link_tag "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <script type="text/javascript">
+      // If our app is not loaded in a canvas, refresh and load inside a canvas
+      <% if !@not_canvas && Rails.env == "production" && !request.path.include?("/admin/") %>
+        if (window == window.top) {
+          window.top.location = '<%= facebook_iframed_url %>';
+        }
+
+        //If userAgent is safari, redirect to allow cookies from ifram
+        if (BrowserDetect.browser.indexOf("Safari") > -1 && document.cookie.indexOf("redirected") == -1) {
+          //console.log('no cookie, no glory');
+          window.top.location = '<%= safari_redirect  %>'
+        }
+      <% end %>
+    </script>
+
+    <%= yield(:head) %>
+  </head>
+
+  <body class="<%= controller_name %> <%= action_name %>">
+      <%#= render 'layouts/navigation' %>
+      <div id="container" >
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+      </div> <!--! end of .container -->
+
+    <%= render "layouts/facebook_sdk" %>
+    <script type="text/javascript">
+      <%= content_for?(:javascript) ? yield(:javascript) : "" %>
+    </script>
+
+    <script type="text/javascript">
+      // Enable CJAX browsing (ie: PushState on smart browsers, full top redirects for IE.)
+      //initCJAX(window);
+    </script>
+  </body>
+</html>

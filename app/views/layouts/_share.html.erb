@@ -1,0 +1,16 @@
+<div class="btn-fb-login btn-fb-share">
+  <span class="icon icon-fb"></span>
+  <%= link_to "Compartir", "#", class: "title", id: "fb-share"  %>
+</div>
+
+<% content_for :fb_javascript do %>
+  $('#fb-share').click(function(e){ 
+    e.preventDefault();
+    FB.ui({
+      method: 'feed',
+          link: '<%= ENV['FACEBOOK_CANVAS'] %>',
+          caption: 'Participa y ganate un viaje a Wall Street',
+          description: '<%= share_description %>'
+          }, function(response){});
+  });
+<% end %>

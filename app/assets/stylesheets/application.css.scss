@@ -1,0 +1,107 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require yui.3.6.0.reset
+ *= require style
+ *= require jquery.friend.selector-1.2.1
+*/
+
+@import "bourbon";
+@charset "utf-8";
+
+.btn-fb-login {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  width: 200px;
+  height: 30px;
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: 4px;
+  background-color: #3b5998;
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.2);
+  cursor: pointer;
+  &:hover {
+    background-color: #293e6a;
+  }
+  .icon {  
+    background: asset_url('fb_login_sprite.png') no-repeat;
+    width: 11px;
+    height: 22px;
+    display: inline-block;
+    float: left;
+    margin: 3px 10px;
+  }
+  .title {
+    font-size: (13/16) +em; 
+    color: #fff;
+    line-height: 30px;
+    float: left;
+    padding: 0 10px;
+    text-shadow: -1px -1px 1px rgba(0,0,0,0.5);
+    box-shadow: -1px 0 0 rgba(255,255,255,0.1) ;
+    border-left: 1px solid rgba(0,0,0,0.3);
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.fb-small {
+  margin: 10px auto;
+}
+.fb-large-centered {
+  width: 220px;
+  margin: 30px auto;
+
+  .btn-fb-login {
+    height: 40px;
+  }
+  .icon {
+    margin: 7px 10px;
+  }
+  .title {
+    height: 40px;
+    line-height:40px;
+    font-size: 0.9em;
+  }
+}
+
+.btn-fb-share {
+  width: 140px;
+}
+
+
+/* css document */
+
+@font-face {
+  font-family: 'score_boardregular';
+  src: asset_url('scoreboard/scoreboard-webfont.eot');
+  src: asset_url('scoreboard/scoreboard-webfont.eot?#iefix') format("embedded-opentype"), asset_url('scoreboard/scoreboard-webfont.woff') format("woff"), asset_url('scoreboard/scoreboard-webfont.ttf') format("truetype"), asset_url('scoreboard/scoreboard-webfont.svg#score_boardregular') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'kelvinizednormal';
+  src: asset_url('kelvinized/kelvinized-webfont.eot');
+  src: asset_url('kelvinized/kelvinized-webfont.eot?#iefix') format("embedded-opentype"), asset_url('kelvinized/kelvinized-webfont.woff') format("woff"), asset_url('kelvinized/kelvinized-webfont.ttf') format("truetype"), asset_url('kelvinized/kelvinized-webfont.svg#kelvinizednormal') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+@font-face {
+  font-family: 'bankgothic_md_btmedium';
+  src: asset_url('bankgothic/bankgothic_md_bt_medium-webfont.eot');
+  src: asset_url('bankgothic/bankgothic_md_bt_medium-webfont.eot?#iefix') format("embedded-opentype"), asset_url('bankgothic/bankgothic_md_bt_medium-webfont.woff') format("woff"), asset_url('bankgothic/bankgothic_md_bt_medium-webfont.ttf') format("truetype"), asset_url('bankgothic/bankgothic_md_bt_medium-webfont.svg#bankgothic_md_btmedium') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}

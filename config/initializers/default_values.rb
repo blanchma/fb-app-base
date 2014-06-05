@@ -1,0 +1,2 @@
+ENV['MAX_RANK']="50"
+ENV['MIN_RANK']="1"

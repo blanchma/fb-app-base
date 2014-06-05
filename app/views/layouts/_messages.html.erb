@@ -1,0 +1,21 @@
+<% false && flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
+
+<% if flash.present? || content_for?(:messages) %>
+  <div class="alert notificacion notification">
+    <button class="close" data-dismiss="alert">&#215;</button>
+    <div class="clearfix"></div>
+    <div class="notificacion-contenido">
+      <% flash.each do |name, msg| %>
+        <%= msg %>
+      <% end %>
+      <%= content_for?(:messages) ? yield(:messages) : "" %>
+    </div>
+  </div>
+<% end %>
